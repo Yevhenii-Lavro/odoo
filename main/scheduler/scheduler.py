@@ -1,3 +1,4 @@
+import logging
 import os
 from typing import Final
 
@@ -6,7 +7,7 @@ from main.db_models.contacts import Contacts
 from main.handlers.odoo_auth_handler import odoo_authorization_uuid
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-
+logger = logging.getLogger(__name__)
 JOB_TIMER: Final[int] = int(os.getenv('JOB_TIMER', '1'))
 
 
@@ -34,6 +35,7 @@ async def get_odoo_contact() -> None:
                 country=country,
                 comment=contact.get('comment')
             ).save()
+            logger.info(msg=f'added contact:{contact} to internal db')
             break
 
 
