@@ -25,9 +25,21 @@ async def get_contact_list() -> list[uuid.UUID]:
     dependencies=[
         fastapi.Depends(_CheckToken())
     ],
-    summary='get certain contact',
+    summary='get certain contact by id',
     tags=['contact']
 )
 async def get_contact(contact_id: uuid.UUID) -> dict[str, Any]:
     return Contacts.objects.get(_id=contact_id).to_mongo()
+
+
+@contact_router.get(
+    path='/contact/{contact_external_id}',
+    dependencies=[
+        fastapi.Depends(_CheckToken())
+    ],
+    summary='get certain contact by external id',
+    tags=['contact']
+)
+async def get_contact(contact_external_id: uuid.UUID) -> dict[str, Any]:
+    return Contacts.objects.get(external_id=contact_external_id).to_mongo()
 
