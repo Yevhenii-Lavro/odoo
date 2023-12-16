@@ -28,7 +28,7 @@ async def get_contact_list() -> list[uuid.UUID]:
     summary='get certain contact by id',
     tags=['contact']
 )
-async def get_contact(contact_id: int) -> dict[str, Any]:
+async def get_contact(contact_id: uuid.UUID) -> dict[str, Any]:
     return Contacts.objects.get(_id=contact_id).to_mongo()
 
 
@@ -40,6 +40,6 @@ async def get_contact(contact_id: int) -> dict[str, Any]:
     summary='get certain contact by external id',
     tags=['contact']
 )
-async def get_contact(contact_external_id: uuid.UUID) -> dict[str, Any]:
+async def get_contact(contact_external_id: int) -> dict[str, Any]:
     return Contacts.objects.get(external_id=contact_external_id).to_mongo()
 
