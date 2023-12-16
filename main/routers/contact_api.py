@@ -33,7 +33,7 @@ async def get_contact(contact_id: uuid.UUID) -> dict[str, Any]:
 
 
 @contact_router.get(
-    path='/contact/{contact_external_id}',
+    path='/contact/external/{contact_external_id}',
     dependencies=[
         fastapi.Depends(_CheckToken())
     ],
