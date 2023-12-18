@@ -9,7 +9,7 @@ contact_router = fastapi.APIRouter()
 
 
 @contact_router.get(
-    path='/contact_list',
+    path='/contact/contact_list',
     dependencies=[
         fastapi.Depends(_CheckToken())
     ],

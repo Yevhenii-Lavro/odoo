@@ -12,6 +12,11 @@ JOB_TIMER: Final[int] = int(os.getenv('JOB_TIMER', '1'))
 
 
 async def get_odoo_contact() -> None:
+    f"""
+    Scheduler which getting contacts from de odoo using rpc and saving them to db
+    {JOB_TIMER} -- timer of scheduler 
+    :return: None
+    """
     from app import ssl_context, ODOO_URL, oddo_db, ODOO_PASSWORD
     uid = await odoo_authorization_uuid()
     models = aioxmlrpc.client.ServerProxy(f'{ODOO_URL}/xmlrpc/2/object', context=ssl_context)

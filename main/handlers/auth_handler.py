@@ -19,6 +19,10 @@ class AuthHandler:
         self.payload = payload
 
     async def sign_up(self) -> uuid.UUID | bool:
+        """
+        Validate data and creating token for new user
+        :return: result of validation/creation
+        """
         with contextlib.suppress(Exception):
             hashed_password = get_password_hash(self.payload.password)
             odoo_id = await odoo_authorization_uuid()
@@ -38,6 +42,10 @@ class AuthHandler:
         return False
 
     async def login(self) -> Token:
+        """
+        Check user access to our internal instruments
+        :return: token: str for frontend usage
+        """
         user = Users.objects(email=self.payload.email).first()
         if not user:
             raise ValueError('email is incorrect')

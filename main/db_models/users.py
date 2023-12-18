@@ -5,6 +5,10 @@ import mongoengine
 
 
 class Users(mongoengine.Document):
+    """
+    Interval sign-up' users
+    password - hashed
+    """
     _id = mongoengine.UUIDField(default=uuid.uuid4, binary=False)
     name = mongoengine.StringField(required=True)
     last_name = mongoengine.StringField(required=True)

@@ -16,9 +16,9 @@ DB_URL: Final[str] = os.getenv('DB_URL', 'mongodb://localhost:27017/')
 DB_PORT: Final[int] = int(os.getenv('DB_PORT', 27017))
 DB_NAME: Final[str] = os.getenv('DB_NAME', 'TEST')
 
-ODOO_URL: Final[str] = os.getenv('ODOO_URL')
-ODOO_USERNAME: Final[str] = os.getenv('ODOO_USERNAME')
-ODOO_PASSWORD: Final[str] = os.getenv('ODOO_PASSWORD')
+ODOO_URL: Final[str] = os.getenv('ODOO_URL', 'https://chift.odoo.com')
+ODOO_USERNAME: Final[str] = os.getenv('ODOO_USERNAME', 'a.kyrychenko@digiscorp.com')
+ODOO_PASSWORD: Final[str] = os.getenv('ODOO_PASSWORD', 'a.kyrychenko@digiscorp.com')
 oddo_db: str = urllib.parse.urlparse(url=ODOO_URL).hostname.split('.')[0]
 
 ssl_context = ssl.create_default_context()

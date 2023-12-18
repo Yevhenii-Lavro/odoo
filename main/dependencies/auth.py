@@ -9,6 +9,10 @@ logger = logging.getLogger(__name__)
 
 
 class _CheckToken:
+    """
+    dependency for check token in header and cookies as well
+    :return data of authorized user
+    """
     async def __call__(
         self,
         header_token: Annotated[

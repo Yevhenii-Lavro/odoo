@@ -4,7 +4,11 @@ import mongoengine
 
 
 class MongoDBConnection:
-
+    """
+    The instance of connector to DB using mongoengine realized as context manager
+    usage: with MongoDBConnection as db: ...
+    where is db - instance: self
+    """
     __instance: Optional['MongoDBConnection'] = None
 
     def __new__(cls, *args, **kwargs) -> 'MongoDBConnection':
